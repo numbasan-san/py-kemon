@@ -1,4 +1,6 @@
 
+from Ataque import ataque
+
 class pokemon:
 
     def __init__(self, nombre, tipo, vida, defensa, damage, velocidad, sprite, ataques):
@@ -10,3 +12,7 @@ class pokemon:
         self.velocidad = velocidad
         self.sprite = sprite
         self.ataques = ataques
+
+    def ataque(nombre, tipo, usos, damage, precision, descripcion):
+        atq = ataque(nombre, tipo, usos, damage, precision, descripcion)
+        return atq
