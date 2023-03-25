@@ -9,7 +9,7 @@ class wendigo(pokemon):
 
     # nombre, tipo, usos, damage, precision, descripcion
     ataque_1 = pokemon.ataque('Desgarre', 'normal', 20, 65, 75, 'Corta al otro con las garras.')
-    ataque_2 = pokemon.ataque('Cacería', 'normal', 10, 0, 100, 'Aumenta la velocidad.')
+    ataque_2 = pokemon.ataque('Cacería', 'normal', 10, -100, 100, 'Aumenta la velocidad.')
     ataque_3 = pokemon.ataque('Asalto', 'normal', 20, 50, 70, 'Salta hacia al enemigo.')
     ataque_4 = pokemon.ataque('Fauces', 'normal', 20, 50, 75, 'Muerde al enemigo.')
 

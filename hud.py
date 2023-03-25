@@ -1,4 +1,8 @@
 
+from debilidades import debilidades
+
+debilidad = debilidades()
+
 class hud:
 
     # ━ ┃ ┏ ┓ ┗ ┛ ┣ ┫ ┳ ┻ ╋
@@ -46,28 +50,24 @@ class hud:
                         ┗━━━━━━━━━━━━━━━━┛
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   1. {(criatura[0].ataques[0]).nombre}      2. {(criatura[0].ataques[1]).nombre}
-  3. {(criatura[0].ataques[2]).nombre}        4. {(criatura[0].ataques[3]).nombre}
+  3. {(criatura[0].ataques[2]).nombre}      4. {(criatura[0].ataques[3]).nombre}
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-  1. {(criatura[0].ataques[0]).nombre}      2. {(criatura[0].ataques[1]).nombre}
-  3. {(criatura[0].ataques[2]).nombre}        4. {(criatura[0].ataques[3]).nombre}
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-  1. {(criatura[0].ataques[0]).nombre} haría: {self.calculate_damage(1.5, 2, 1, 
+  1. {(criatura[0].ataques[0]).nombre} haría: {debilidad.calculate_damage(1.5, debilidad.search_efects((criatura[0].ataques[0]).tipo, criatura[1].tipo), 1, 
                                                                     1, criatura[0].damage, 
                                                                     (criatura[0].ataques[0]).damage, criatura[1].defensa)}
-  2. {(criatura[0].ataques[1]).nombre} haría: {self.calculate_damage(1.5, 2, 1, 
+  2. {(criatura[0].ataques[1]).nombre} haría: {debilidad.calculate_damage(1.5, debilidad.search_efects((criatura[0].ataques[1]).tipo, criatura[1].tipo), 1, 
                                                                     1, criatura[0].damage, 
                                                                     (criatura[0].ataques[1]).damage, criatura[1].defensa)}
-  3. {(criatura[0].ataques[2]).nombre} haría: {self.calculate_damage(1.5, 2, 1, 
+  3. {(criatura[0].ataques[2]).nombre} haría: {debilidad.calculate_damage(1.5, debilidad.search_efects((criatura[0].ataques[2]).tipo, criatura[1].tipo), 1, 
                                                                     1, criatura[0].damage, 
                                                                     (criatura[0].ataques[2]).damage, criatura[1].defensa)}      
-  4. {(criatura[0].ataques[3]).nombre} haría: {self.calculate_damage(1.5, 2, 1, 
+  4. {(criatura[0].ataques[3]).nombre} haría: {debilidad.calculate_damage(1.5, debilidad.search_efects((criatura[0].ataques[3]).tipo, criatura[1].tipo), 1, 
                                                                     1, criatura[0].damage, 
                                                                     (criatura[0].ataques[3]).damage, criatura[1].defensa)}
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
@@ -75,16 +75,3 @@ class hud:
         """
         return hud
       
-    # same type attack bonus, efecto, variacion, nivel, ataque, potencia, defensa
-    @staticmethod
-    def calculate_damage(stab, eft, var, lvl, atk, ptnc, defe):
-      final_dmg = 0.01 * stab * eft * var * ( ( ( ( 0.2 + lvl + 1 ) * atk * ptnc ) / ( 25 * defe ) ) + 2 )
-      '''
-      part_1 = 0.01 * stab * eft * var
-      part_2 = 0.2 + lvl + 1
-      part_3 = atk * ptnc
-      part_4 = 25 * defe
-      
-      final_dmg = part_1 * ()
-      '''
-      return final_dmg * 100
