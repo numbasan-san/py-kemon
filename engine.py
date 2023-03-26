@@ -2,6 +2,7 @@
 from start_pokemon import *
 from utilities import *
 from hud import *
+from combat import *
 import os
 
 class engine:
@@ -9,14 +10,11 @@ class engine:
     def __init__(self):
         self.start_pokemon = start_pokemon()
         self.hud = hud()
+        self.combat = combat()
         self.end_all = False
 
     def print_pokemones(self):
-        """
-        criaturas = [self.start_pokemon.wendigo, self.start_pokemon.sirena, 
-                     self.start_pokemon.hipocampo, self.start_pokemon.golem, 
-                     self.start_pokemon.fenix, self.start_pokemon.kirin]
-        """
+        # criaturas = [self.start_pokemon.wendigo, self.start_pokemon.sirena, self.start_pokemon.hipocampo, self.start_pokemon.golem, self.start_pokemon.fenix, self.start_pokemon.kirin]
         print(f'Tenemos estos "pokemones":')
         for criatura in self.start_pokemon.loaded_pokemon():
             print(f'{self.hud.info_hud(criatura)}')
@@ -37,10 +35,11 @@ class engine:
             self.select_pokemon()
         
         os.system('cls')
-
+        self.game_over()
+    '''
     def print_combat(self, elegidos):
         self.hud.combat_hud(elegidos[0], elegidos[1])
-        self.game_over()
+    '''
 
     def select_pokemon(self):
         selected = []
@@ -54,13 +53,9 @@ class engine:
             selected.append(self.start_pokemon.loaded_pokemon()[opt])
 
         os.system('cls')
-        print(self.hud.combat_hud(selected))
+        print(self.combat.start_combat(selected[0], selected[1]))
 
         self.game_over()
-    
-    # same type attack bonus, efecto, variacion, nivel, ataque, potencia, defensa
-    def calculate_damage(stab, eft, var, lvl, atk, ptnc, defe):
-        return ( 0.01 * stab * eft * var ( ( ( (0.2 * lvl + 1) * atk * ptnc ) / 25 * defe) + 2 ) )
 
     def game_over(self):
         option = utilities.opciones('Terminar? Y, N ', ['Y', 'N'])
