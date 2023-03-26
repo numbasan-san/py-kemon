@@ -5,7 +5,8 @@ class sirena(pokemon):
     
     def __init__(self):
         # nombre, tipo, vida, defensa, damage, velocidad, sprite, ataques
-        super().__init__('sirena', 'volador', 50, 20, 40, 83, 'S', [self.ataque_1, self.ataque_2, self.ataque_3, self.ataque_4])
+        super().__init__('sirena', 'volador', 50, 20, 40, 83, 'S', 
+                         [self.ataque_1, self.ataque_2, self.ataque_3, self.ataque_4])
     
     # nombre, tipo, usos, damage, precision, descripcion
     ataque_1 = pokemon.ataque('Encanto', 'volador', 5, 00, 65, 'Hipnotiza al contrincante.')
