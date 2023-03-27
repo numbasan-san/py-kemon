@@ -22,13 +22,15 @@ class combat:
                 criatura_1.defensa
                 )
             self.make_damage(criatura_1, damage)
-            (criatura_0.ataques[opt]).funcion()
-            self.reduce_uses((criatura_0.ataques[opt]))
-            input('pulse neter para continuar')
+            if (criatura_0.ataques[opt]).usos > 0:
+                self.reduce_uses((criatura_0.ataques[opt]))
+                if (criatura_0.ataques[opt]).funcion != None:
+                    (criatura_0.ataques[opt]).funcion()
+                print(f'{criatura_0.nombre} ha usado {(criatura_0.ataques[opt]).nombre}.')
+            else:
+                print(f'El ataque {(criatura_0.ataques[opt]).nombre} no se puede usar más.')
+            input('pulse enter para continuar')
             os.system('cls')
-
-    def exe_funcion(self, ataque):
-        print(ataque.funcion)
 
     def reduce_uses(self, ataque):
         ataque.usos -= 1
