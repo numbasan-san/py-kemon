@@ -7,9 +7,12 @@ class combat:
 
     def __init__(self):
         self.hud = hud()
+        self.turno_0 = True
 
-    def start_combat(self, criatura_0, criatura_1):
+    def start_combat(self, criaturas):
         while(True):
+            jugadores = criaturas if self.turno_0 == True else criaturas[::-1]
+            criatura_0, criatura_1 = jugadores[0], jugadores[1]
             print(hud.combat_hud([criatura_0, criatura_1]))
             opt = utilities.pregunta('Elija uno de los ataques disponibles. ', 1, 4, -1) - 1
             # same type attack bonus, efecto, variacion, nivel, ataque, potencia, defensa
@@ -43,6 +46,10 @@ class combat:
         
             if (criatura_1.vida < 1 or criatura_0.vida < 1):
                 break
+            self.turno_0 = not(self.turno_0)
+        '''
+        '''
+            
 
     def reduce_uses(self, ataque):
         ataque.usos -= 1

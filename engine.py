@@ -52,9 +52,7 @@ class engine:
             selected.append(self.start_pokemon.loaded_pokemon()[opt])
 
         os.system('cls')
-        print(self.combat.start_combat(selected[0], selected[1]))
-
-        self.game_over()
+        print(self.combat.start_combat(selected))
 
     def game_over(self):
         option = utilities.opciones('Terminar? Y, N ', ['Y', 'N'])
