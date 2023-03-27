@@ -59,6 +59,17 @@ class hud:
     Nam: {criatura[0].nombre}. Typ: {criatura[0].tipo}. HP: {criatura[0].vida}.
     Def: {criatura[0].defensa}. Dmg: {criatura[0].damage}. Vel: {criatura[0].velocidad}.
 
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  Información del pokemon enemigo:
+  
+    Nam: {criatura[1].nombre}. Typ: {criatura[1].tipo}. HP: {criatura[1].vida}.
+    Def: {criatura[1].defensa}. Dmg: {criatura[1].damage}. Vel: {criatura[1].velocidad}.
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+        """
+        return hud
+'''
     Ataques:
     Nam: {(criatura[0].ataques[0]).nombre}. Typ: {(criatura[0].ataques[0]).tipo}. Use: {(criatura[0].ataques[0]).usos}.
     Dmg: {(criatura[0].ataques[0]).damage}. Acu: {(criatura[0].ataques[0]).precision}.
@@ -74,8 +85,4 @@ class hud:
 
     Nam: {(criatura[0].ataques[3]).nombre}. Typ: {(criatura[0].ataques[3]).tipo}. Use: {(criatura[0].ataques[3]).usos}.
     Dmg: {(criatura[0].ataques[3]).damage}. Acu: {(criatura[0].ataques[3]).precision}.
-    Dsc: {(criatura[0].ataques[3]).descripcion}.
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
-        """
-        return hud
+    Dsc: {(criatura[0].ataques[3]).descripcion}.'''

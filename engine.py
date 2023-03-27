@@ -14,7 +14,6 @@ class engine:
         self.end_all = False
 
     def print_pokemones(self):
-        # criaturas = [self.start_pokemon.wendigo, self.start_pokemon.sirena, self.start_pokemon.hipocampo, self.start_pokemon.golem, self.start_pokemon.fenix, self.start_pokemon.kirin]
         print(f'Tenemos estos "pokemones":')
         for criatura in self.start_pokemon.loaded_pokemon():
             print(f'{self.hud.info_hud(criatura)}')

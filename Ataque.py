@@ -1,7 +1,7 @@
 
 class ataque:
 
-    def __init__(self, nombre, tipo, usos, damage, precision, descripcion, funcion):
+    def __init__(self, nombre, tipo, usos, damage, precision, descripcion, funcion, efecto):
         self.nombre = nombre
         self.tipo = tipo
         self.usos = usos
@@ -9,3 +9,4 @@ class ataque:
         self.precision = precision
         self.descripcion = descripcion
         self.funcion = funcion
+        self.efecto = efecto

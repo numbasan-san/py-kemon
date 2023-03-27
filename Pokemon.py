@@ -13,6 +13,6 @@ class pokemon:
         self.sprite = sprite
         self.ataques = ataques
 
-    def ataque(nombre, tipo, usos, damage, precision, descripcion, funcion = None):
-        atq = ataque(nombre, tipo, usos, damage, precision, descripcion, funcion)
+    def ataque(nombre, tipo, usos, damage, precision, descripcion, funcion = None, efecto = False):
+        atq = ataque(nombre, tipo, usos, damage, precision, descripcion, funcion, efecto)
         return atq
