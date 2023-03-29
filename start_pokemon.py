@@ -6,6 +6,9 @@ from pokemones.Golem import *
 from pokemones.Fenix import *
 from pokemones.Kirin import *
 
+from Pokemon import *
+
+# Para inicializarlo todo y tener todo en el mismo lugar.
 class start_pokemon:
     
     def __init__(self):
@@ -17,6 +20,6 @@ class start_pokemon:
         self.kirin = kirin()
 
     def loaded_pokemon(self):
-        return [self.wendigo, self.sirena, 
-                self.hipocampo, self.golem, 
-                self.fenix, self.kirin]
+        return [self.wendigo.start_wendigo(), self.sirena.start_sirena(), 
+                self.hipocampo.start_hipocampo(), self.golem.start_golem(), 
+                self.fenix.start_fenix(), self.kirin.start_kirin()]

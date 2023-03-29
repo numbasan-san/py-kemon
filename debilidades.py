@@ -1,6 +1,7 @@
 
 class debilidades:
 
+    # Los índices de daño según el tipo del ataque.
     def __init__(self):
         self.fuego = {
             'hielo': 2, 
@@ -51,6 +52,7 @@ class debilidades:
             'metal': 0.5
         }
 
+    # Se busca el tipo del pokemon enemigo y el ataque, luego se carga las debilidades y resistencias en función del tipo.
     def search_efects(self, tipo_ataque, tipo_pokemon_enemigo):
         elements = {
             'fuego': self.fuego, 
@@ -61,13 +63,14 @@ class debilidades:
             'agua': self.agua
         }
         if tipo_ataque == 'normal' or tipo_pokemon_enemigo == 'normal':
-            print(f'El tipo del ataque es {tipo_ataque}. Tipo de pokemon enemigo: {tipo_pokemon_enemigo}. Efecto del ataque x{1}')
+            # print(f'El tipo del ataque es {tipo_ataque}. Tipo de pokemon enemigo: {tipo_pokemon_enemigo}. Efecto del ataque x{1}')
             return 1
         else:
             listado = elements[tipo_ataque]
-            print(f'El tipo del ataque es {tipo_ataque}. Tipo de pokemon enemigo: {tipo_pokemon_enemigo}. Efecto del ataque x{listado[tipo_pokemon_enemigo]}')
+            # print(f'El tipo del ataque es {tipo_ataque}. Tipo de pokemon enemigo: {tipo_pokemon_enemigo}. Efecto del ataque x{listado[tipo_pokemon_enemigo]}')
             return listado[tipo_pokemon_enemigo]
 
+    # Cálculo del daño. 
     # same type attack bonus, efecto, variacion, nivel, ataque, potencia, defensa
     @staticmethod
     def calculate_damage(stab, eft, var, atk, ptnc, defe):

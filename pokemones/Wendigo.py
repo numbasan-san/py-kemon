@@ -1,12 +1,13 @@
 
 from Pokemon import pokemon
 
-class wendigo(pokemon):
+class wendigo:
 
-    def __init__(self):
+    def start_wendigo(self):
         # nombre, tipo, vida, defensa, damage, velocidad, sprite, ataques
-        super().__init__('wendigo', 'hielo', 100, 40, 65, 60, 'W', [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
+        return pokemon('wendigo', 'hielo', 100, 40, 65, 60, 'W', [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
 
+    # nombre, tipo, usos, damage, precision, descripcion
     def ataque_1(self):
         return pokemon.ataque('Desgarre', 'normal', 20, 65, 75, 'Corta al otro con las garras.')
 
@@ -19,10 +20,8 @@ class wendigo(pokemon):
     def ataque_4(self):
         return pokemon.ataque('Fauces', 'normal', 20, 50, 75, 'Muerde al enemigo.')
 
-    def caceria(self):
-        self.velocidad += int(self.velocidad * 0.1)
-
-    # nombre, tipo, usos, damage, precision, descripcion
-
+    def caceria(self, own):
+        own.velocidad += int(own.velocidad * 0.1)
+        print('Velocidad incrementada.')
 
 # 6600 AMD

@@ -1,11 +1,11 @@
 
 from Pokemon import pokemon
 
-class sirena(pokemon):
+class sirena:
 
-    def __init__(self):
+    def start_sirena(self):
         # nombre, tipo, vida, defensa, damage, velocidad, sprite, ataques
-        super().__init__('sirena', 'volador', 50, 20, 40, 83, 'S', [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
+        return pokemon('sirena', 'volador', 50, 20, 55, 83, 'S', [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
 
     # nombre, tipo, usos, damage, precision, descripcion, funcion = None, efecto = False
     def ataque_1(self):
@@ -21,10 +21,13 @@ class sirena(pokemon):
         return pokemon.ataque('Zarpazos', 'normal', 20, 50, 90, 'Zarpazos.')
 
     def onda_de_choque(self, criatura):
-        criatura.velocidad -= int(criatura.velocidad * 0.05)
+        criatura.velocidad -= int(criatura.velocidad * 0.15)
+        print('Velocidad enemiga mermada.')
 
     def encanto(self, criatura):
         criatura.defensa -= int(criatura.defensa * 0.15)
+        print('Defensa enemiga mermada.')
 
-    def vuelo(self):
-        self.velocidad += int(self.velocidad * 0.2)
+    def vuelo(self, own):
+        own.velocidad += int(own.velocidad * 0.2)
+        print('Velocidad propia aumentada.')

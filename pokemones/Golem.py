@@ -1,11 +1,11 @@
 
 from Pokemon import pokemon
 
-class golem(pokemon):
-
-    def __init__(self):
+class golem:
+    
+    def start_golem(self):
         # nombre, tipo, vida, defensa, damage, velocidad, sprite, ataques
-        super().__init__('golem', 'metal', 200, 80, 60, 40, 'G', [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
+        return pokemon('golem', 'metal', 200, 80, 60, 40, 'G', [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
 
     # nombre, tipo, usos, damage, precision, descripcion
     def ataque_1(self):
@@ -20,8 +20,10 @@ class golem(pokemon):
     def ataque_4(self):
         return pokemon.ataque('Impacto', 'normal', 20, 50, 90, 'Da un puñetazo al contrincante.')
 
-    def coraza(self):
-        self.defensa += int(self.defensa * 0.1)
+    def coraza(self, own):
+        own.defensa += int(own.defensa * 0.1)
+        print('Defensa propia aumentada.')
     
     def sismo(self, criatura):
         criatura.velocidad -= 4
+        print('Velocidad enemiga mermada.')

@@ -1,11 +1,11 @@
 
 from Pokemon import pokemon
 
-class hipocampo(pokemon):
-
-    def __init__(self):
+class hipocampo:
+    
+    def start_hipocampo(self):
         # nombre, tipo, vida, defensa, damage, velocidad, sprite, ataques
-        super().__init__('hipocampo', 'agua', 60, 30, 50, 100, 'H',  [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
+        return pokemon('hipocampo', 'agua', 60, 30, 50, 100, 'H',  [self.ataque_1(), self.ataque_2(), self.ataque_3(), self.ataque_4()])
     
     # nombre, tipo, usos, damage, precision, descripcion
     def ataque_1(self):
@@ -22,6 +22,8 @@ class hipocampo(pokemon):
 
     def naufrajio(self, criatura):
         criatura.defensa -= 5
+        print('Defensa enemiga mermada.')
 
-    def natatoria(self):
-        self.velocidad += int(self.velocidad * 0.05)
+    def natatoria(self, own):
+        own.velocidad += int(own.velocidad * 0.05)
+        print('Velocidad propia aumentada.')
