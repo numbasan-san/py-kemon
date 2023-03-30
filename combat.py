@@ -15,14 +15,17 @@ class combat:
     def start_combat(self, criaturas):
 
         while(True):
-            jugadores = criaturas if self.turno_0 == True else criaturas[::-1]
-            criatura_0, criatura_1 = jugadores[0], jugadores[1]
-            print(f'Turno de: {jugadores[0].nombre}')
-            # Se carga la interfáz.
-            print(hud.combat_hud([criatura_0, criatura_1]))
+            criatura_0, criatura_1 = (criaturas[0], criaturas[1]) if self.turno_0 else (criaturas[1], criaturas[0])
+            print(f'Turno de: {criaturas[0].nombre if self.turno_0 else criaturas[1].nombre}')
             
+            # Se carga la interfáz.
+            print(hud.combat_hud([criaturas[0], criaturas[1]]))
+
             # Se manda a elejir un ataque.
-            opt = utilities.pregunta('Elija uno de los ataques disponibles. ', 1, 4, -1) - 1
+            if self.turno_0:
+                opt = utilities.pregunta('Elija uno de los ataques disponibles. ', 1, 4, -1) - 1
+            else:
+                opt = self.random_ia()
 
             # Se calcula el daño y se efectua, junto al efecto que este tenga. También se reduce el uso del ataque.
             # same type attack bonus, efecto, variacion, nivel, ataque, potencia, defensa
@@ -50,24 +53,29 @@ class combat:
                             (criatura_0.ataques[opt]).funcion(criatura_0)
                 self.turno_0 = not(self.turno_0)
 
-                if efecto == 0.5 and damage > 0:
-                    print('Es muy poco efectivo.')
-                elif efecto == 0.75 and damage > 0:
-                    print('Es poco efectivo.')
-                elif efecto == 1.25 and damage > 0:
-                    print('Es muy efectivo.')
-                elif efecto == 2 and damage > 0:
-                    print('Es super efectivo.')
+                # En verdad que esto podría ser más bonito, pero ñeh.
+                if damage > 0:
+                    if efecto == 0.5:
+                        print('Es muy poco efectivo.')
+                    elif efecto == 0.75:
+                        print('Es poco efectivo.')
+                    elif efecto == 1.25:
+                        print('Es muy efectivo.')
+                    elif efecto == 2:
+                        print('Es super efectivo.')
 
             else:
                 print(f'\nEl ataque {(criatura_0.ataques[opt]).nombre} no se puede usar más.')
 
-            if (criatura_1.vida < 1 or criatura_0.vida < 1):
-                ganador = criatura_0.nombre if criatura_1.vida < 1 else criatura_1 
+            if (criatura_1.vida <= 0 or criatura_0.vida <= 0):
+                os.system('cls')
+                print(hud.combat_hud([criaturas[0], criaturas[1]]))
+                ganador = criaturas[0].nombre if criaturas[1].vida <= 0 else criaturas[1] 
                 input(f'{ganador} ha ganado.')
                 break
-            input('\nPULSE ENTER PARA CONTINUAR')
-            os.system('cls')
+            else:
+                input('\nPULSE ENTER PARA CONTINUAR')
+                os.system('cls')
 
     # Para reducir los usos de un ataque.
     def reduce_uses(self, ataque):
@@ -76,3 +84,6 @@ class combat:
     # Para efectuar el ataque.
     def make_damage(self, criatura, damage):
         criatura.vida -= damage
+        
+    def random_ia(self):
+        return random.randint(0, 3)

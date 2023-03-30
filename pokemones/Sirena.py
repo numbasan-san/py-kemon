@@ -9,7 +9,7 @@ class sirena:
 
     # nombre, tipo, usos, damage, precision, descripcion, funcion = None, efecto = False
     def ataque_1(self):
-        return pokemon.ataque('Encanto', 'volador', 5, 00, 65, 'Hipnotiza al contrincante y reduce su defensa un poco.', self.encanto, True)
+        return pokemon.ataque('Encanto', 'volador', 5, 00, 65, 'Hipnotiza al contrincante y reduce su defensa bastante.', self.encanto, True)
 
     def ataque_2(self):
         return pokemon.ataque('Onda de Choque', 'volador', 20, 60, 80, 'Canta a frecuencias que causan dolor de cabeza y que reduce la velocidad del oponente.', self.onda_de_choque, True)
