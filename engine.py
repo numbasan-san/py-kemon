@@ -27,7 +27,7 @@ class engine:
             os.system('cls')
             for i in range(len(self.start_pokemon.loaded_pokemon())):
                 print(f'#{i + 1}\n{ self.hud.info_hud(self.start_pokemon.loaded_pokemon()[i]) }')
-            opt = utilities.pregunta('Elija uno de los disponibles. ', 1, len(self.start_pokemon.loaded_pokemon()), -1) - 1
+            opt = utilities.pregunta('Elija uno de los disponibles. ', len(self.start_pokemon.loaded_pokemon())) - 1
             os.system('cls')
             print(self.hud.info_hud(self.start_pokemon.loaded_pokemon()[opt], all = True))
             input('Pulse enter para salir.')
@@ -46,7 +46,7 @@ class engine:
             print(f'#{i + 1}\n{self.hud.info_hud(self.start_pokemon.loaded_pokemon()[i])}')
 
         for i in range(2):
-            opt = utilities.pregunta('Elija uno de los disponibles. ', 1, len(self.start_pokemon.loaded_pokemon()), -1) - 1
+            opt = utilities.pregunta('Elija uno de los disponibles. ', len(self.start_pokemon.loaded_pokemon())) - 1
             print(f'elejido: {self.start_pokemon.loaded_pokemon()[opt].nombre}')
             selected.append(self.start_pokemon.loaded_pokemon()[opt])
 

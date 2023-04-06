@@ -31,7 +31,6 @@ class kirin:
     
     def latigo(self, criatura):
         ran = random.randint(1, 10)
-        print(f'Dado: {ran}')
         if ran <= 2:
             criatura.velocidad -= int(criatura.velocidad * 0.05)
             print('Velocidad enemiga mermada.')

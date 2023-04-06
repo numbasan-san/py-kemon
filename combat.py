@@ -23,7 +23,7 @@ class combat:
 
             # Se manda a elejir un ataque.
             if self.turno_0:
-                opt = utilities.pregunta('Elija uno de los ataques disponibles. ', 1, 4, -1) - 1
+                opt = utilities.pregunta('Elija uno de los ataques disponibles. ', 4) - 1
             else:
                 opt = self.random_ia()
 

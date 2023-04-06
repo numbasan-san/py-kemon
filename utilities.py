@@ -9,8 +9,12 @@ class utilities:
         return valor
     
     @staticmethod
-    def pregunta(texto, min, max, key):
-        valor = key
-        while (valor < min) or (valor > max):
-            valor = int(input(f'{texto} (Por favor, seleccione una de las opciones dadas). '))
-        return valor
+    def pregunta(texto, max):
+        valor = ''
+        opt = []
+
+        for i in range(max):
+            opt.append(str(i + 1))
+        while not(valor in opt):
+            valor = input(f'{texto} (Por favor, seleccione una de las opciones dadas). ')
+        return int(valor)
