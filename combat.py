@@ -27,6 +27,15 @@ class combat:
             else:
                 opt = self.random_ia()
 
+            '''
+                Fórmula de evasión:
+                    ((criatura_0.ataques[opt]).precision) * (criatura_0.precision / criattura_1.velocidad)
+
+                No existe el atributo "precision" en los "pokemon", solo en los ataques, por lo que no sé qué atributo ya existente usar. Y la fórmula original dicta que el denominador debe ser la evasión, pero no tengo eso por lo que velocidad y ya.
+
+                Nmms, que hueva implementar el sistema de evasión.
+            '''
+
             # Se calcula el daño y se efectua, junto al efecto que este tenga. También se reduce el uso del ataque.
             # same type attack bonus, efecto, variacion, nivel, ataque, potencia, defensa
             stab = 1.5 if (criatura_0.ataques[opt]).tipo == criatura_0.tipo else 1
@@ -40,29 +49,33 @@ class combat:
                 (criatura_0.ataques[opt]).damage, 
                 criatura_1.defensa
             )
+
             print(f'\n{criatura_0.nombre} ha usado {(criatura_0.ataques[opt]).nombre}.')
-            self.make_damage(criatura_1, damage)
+
             if (criatura_0.ataques[opt]).usos > 0:
                 self.reduce_uses((criatura_0.ataques[opt]))
                 var = random.randint(1, 100)
                 if var < (criatura_0.ataques[opt]).precision:
+                    self.make_damage(criatura_1, damage)
+                    # En verdad que esto podría ser más bonito, pero ñeh.
+                    if damage > 0:
+                        if efecto == 0.5:
+                            print('Es muy poco efectivo.')
+                        elif efecto == 0.75:
+                            print('Es poco efectivo.')
+                        elif efecto == 1.25:
+                            print('Es muy efectivo.')
+                        elif efecto == 2:
+                            print('Es super efectivo.')
                     if (criatura_0.ataques[opt]).funcion != None:
                         if (criatura_0.ataques[opt]).efecto == True:
                             (criatura_0.ataques[opt]).funcion(criatura_1)
                         else:
                             (criatura_0.ataques[opt]).funcion(criatura_0)
-                self.turno_0 = not(self.turno_0)
+                else:
+                    print(f'\n{criatura_0.nombre} ha fallado {(criatura_0.ataques[opt]).nombre}.')
 
-                # En verdad que esto podría ser más bonito, pero ñeh.
-                if damage > 0:
-                    if efecto == 0.5:
-                        print('Es muy poco efectivo.')
-                    elif efecto == 0.75:
-                        print('Es poco efectivo.')
-                    elif efecto == 1.25:
-                        print('Es muy efectivo.')
-                    elif efecto == 2:
-                        print('Es super efectivo.')
+                self.turno_0 = not(self.turno_0)
 
             else:
                 print(f'\nEl ataque {(criatura_0.ataques[opt]).nombre} no se puede usar más.')
@@ -70,7 +83,7 @@ class combat:
             if (criatura_1.vida <= 0 or criatura_0.vida <= 0):
                 os.system('cls')
                 print(hud.combat_hud([criaturas[0], criaturas[1]]))
-                ganador = criaturas[0].nombre if criaturas[1].vida <= 0 else criaturas[1] 
+                ganador = criaturas[0].nombre if criaturas[1].vida <= 0 else criaturas[1].nombre 
                 input(f'{ganador} ha ganado.')
                 break
             else:
@@ -84,6 +97,6 @@ class combat:
     # Para efectuar el ataque.
     def make_damage(self, criatura, damage):
         criatura.vida -= damage
-        
+
     def random_ia(self):
         return random.randint(0, 3)

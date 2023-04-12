@@ -36,7 +36,7 @@ class engine:
             self.select_pokemon()
 
         os.system('cls')
-        self.game_over()
+        # self.game_over()
 
     # Imprime otra vez los "pokemones" para que se elijan los que pelearán.
     def select_pokemon(self):

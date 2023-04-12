@@ -17,19 +17,19 @@ class hud:
     Ataques:
     Nam: {(criatura.ataques[0]).nombre}. Typ: {(criatura.ataques[0]).tipo}. Use: {(criatura.ataques[0]).usos}.
     Dmg: {(criatura.ataques[0]).damage}. Acu: {(criatura.ataques[0]).precision}.
-    Dsc: {(criatura.ataques[0]).descripcion}.
+    Dsc: {(criatura.ataques[0]).descripcion}
 
     Nam: {(criatura.ataques[1]).nombre}. Typ: {(criatura.ataques[1]).tipo}. Use: {(criatura.ataques[1]).usos}.
     Dmg: {(criatura.ataques[1]).damage}. Acu: {(criatura.ataques[1]).precision}.
-    Dsc: {(criatura.ataques[1]).descripcion}.
+    Dsc: {(criatura.ataques[1]).descripcion}
 
     Nam: {(criatura.ataques[2]).nombre}. Typ: {(criatura.ataques[2]).tipo}. Use: {(criatura.ataques[2]).usos}.
     Dmg: {(criatura.ataques[2]).damage}. Acu: {(criatura.ataques[2]).precision}.
-    Dsc: {(criatura.ataques[2]).descripcion}.
+    Dsc: {(criatura.ataques[2]).descripcion}
 
     Nam: {(criatura.ataques[3]).nombre}. Typ: {(criatura.ataques[3]).tipo}. Use: {(criatura.ataques[3]).usos}.
     Dmg: {(criatura.ataques[3]).damage}. Acu: {(criatura.ataques[3]).precision}.
-    Dsc: {(criatura.ataques[3]).descripcion}.
+    Dsc: {(criatura.ataques[3]).descripcion}
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 """
       # Impresión del nombre y tipo.
