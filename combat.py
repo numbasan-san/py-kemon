@@ -1,5 +1,7 @@
 
 import random
+import sys
+import time
 from hud import *
 from utilities import *
 import os
@@ -50,7 +52,7 @@ class combat:
                 criatura_1.defensa
             )
 
-            print(f'\n{criatura_0.nombre} ha usado {(criatura_0.ataques[opt]).nombre}.')
+            self.print_effect(f'\n{criatura_0.nombre} ha usado {(criatura_0.ataques[opt]).nombre}.\n')
 
             if (criatura_0.ataques[opt]).usos > 0:
                 self.reduce_uses((criatura_0.ataques[opt]))
@@ -60,31 +62,33 @@ class combat:
                     # En verdad que esto podría ser más bonito, pero ñeh.
                     if damage > 0:
                         if efecto == 0.5:
-                            print('Es muy poco efectivo.')
+                            self.print_effect('Es muy poco efectivo.\n')
                         elif efecto == 0.75:
-                            print('Es poco efectivo.')
+                            self.print_effect('Es poco efectivo.\n')
                         elif efecto == 1.25:
-                            print('Es muy efectivo.')
+                            self.print_effect('Es muy efectivo.\n')
                         elif efecto == 2:
-                            print('Es super efectivo.')
+                            self.print_effect('Es super efectivo.\n')
                     if (criatura_0.ataques[opt]).funcion != None:
                         if (criatura_0.ataques[opt]).efecto == True:
                             (criatura_0.ataques[opt]).funcion(criatura_1)
                         else:
                             (criatura_0.ataques[opt]).funcion(criatura_0)
                 else:
-                    print(f'\n{criatura_0.nombre} ha fallado {(criatura_0.ataques[opt]).nombre}.')
+                    self.print_effect(f'\n{criatura_0.nombre} ha fallado {(criatura_0.ataques[opt]).nombre}.')
 
                 self.turno_0 = not(self.turno_0)
 
             else:
-                print(f'\nEl ataque {(criatura_0.ataques[opt]).nombre} no se puede usar más.')
+                self.print_effect(f'\nEl ataque {(criatura_0.ataques[opt]).nombre} no se puede usar más.')
 
             if (criatura_1.vida <= 0 or criatura_0.vida <= 0):
                 os.system('cls')
                 print(hud.combat_hud([criaturas[0], criaturas[1]]))
+                perdedor = criaturas[0].nombre if criaturas[0].vida <= 0 else criaturas[1].nombre 
                 ganador = criaturas[0].nombre if criaturas[1].vida <= 0 else criaturas[1].nombre 
-                input(f'{ganador} ha ganado.')
+                self.print_effect(f'{perdedor} no puede continuar.')
+                self.print_effect(f'{ganador} ha ganado.')
                 break
             else:
                 input('\nPULSE ENTER PARA CONTINUAR')
@@ -100,3 +104,9 @@ class combat:
 
     def random_ia(self):
         return random.randint(0, 3)
+    
+    def print_effect(self, s):
+        for c in s:
+            sys.stdout.write(c)
+            sys.stdout.flush()
+            time.sleep(0.05)

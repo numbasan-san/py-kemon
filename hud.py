@@ -51,8 +51,10 @@ class hud:
         {criatura[0].sprite}                 {criatura[0].nombre} HP: {criatura[0].vida}
                         ┗━━━━━━━━━━━━━━━━┛
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-  1. {(criatura[0].ataques[0]).nombre} PP: {(criatura[0].ataques[0]).usos}  2. {(criatura[0].ataques[1]).nombre} PP: {(criatura[0].ataques[1]).usos}
-  3. {(criatura[0].ataques[2]).nombre} PP: {(criatura[0].ataques[2]).usos}  4. {(criatura[0].ataques[3]).nombre} PP: {(criatura[0].ataques[3]).usos}
+  1. {(criatura[0].ataques[0]).nombre} PP: {(criatura[0].ataques[0]).usos}  
+  2. {(criatura[0].ataques[1]).nombre} PP: {(criatura[0].ataques[1]).usos}
+  3. {(criatura[0].ataques[2]).nombre} PP: {(criatura[0].ataques[2]).usos}  
+  4. {(criatura[0].ataques[3]).nombre} PP: {(criatura[0].ataques[3]).usos}
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
         """
         return hud
